@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
+import org.springframework.kafka.support.serializer.ErrorHandlingDeserializer;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 @Configuration
@@ -22,7 +23,7 @@ public class VmKafkaConsumerConfig extends KafkaConsumerConfig {
     Map<String, Object> props = consumerFactoryConfig(vmGroupId);
     return new DefaultKafkaConsumerFactory<>(props,
         new StringDeserializer(),
-        new JsonDeserializer<>(VmDto.class));
+        new ErrorHandlingDeserializer(new JsonDeserializer<>(VmDto.class)));
   }
 
   @Bean

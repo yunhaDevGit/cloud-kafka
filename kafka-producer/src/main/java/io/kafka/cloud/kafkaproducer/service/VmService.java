@@ -4,6 +4,7 @@ import io.kafka.cloud.kafkacommon.repository.VmRepository;
 import io.kafka.cloud.kafkaproducer.dto.VmDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.kafka.support.SendResult;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
+@ComponentScan(basePackages = "io.kafka.cloud.kafkacommon")
 @Service
 public class VmService {
 

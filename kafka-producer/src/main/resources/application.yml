@@ -1,16 +1,2 @@
 server:
-  port: 9098
-spring:
-  datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-  h2:
-    console:
-      enabled: true
-  jpa:
-    database: h2
-    database-platform: org.hibernate.dialect.H2Dialect
-    generate-ddl: true
-    show-sql: false
-    hibernate:
-      ddl-auto: create-drop
+  port: 9097

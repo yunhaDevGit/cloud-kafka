@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class VmCreateExecutor {
 
-  @KafkaListener(topics = "${kafka.vm.topic.name}", groupId = "${kafka.vm.topic.group.name}", containerFactory = "vmKafkaListenerContainerFactory")
+  @KafkaListener(topics = "${kafka.topic.ace.vm}", groupId = "${kafka.group.ace.vm}", containerFactory = "vmKafkaListenerContainerFactory")
   public void listenWithHeaders(@Payload VmDto vmDto, @Headers MessageHeaders messageHeaders) {
     System.out.println("Received Message: " + vmDto.toString() + " headers: " + messageHeaders);
   }

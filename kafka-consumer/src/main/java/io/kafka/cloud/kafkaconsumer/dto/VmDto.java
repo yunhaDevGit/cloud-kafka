@@ -14,13 +14,4 @@ public class VmDto {
   private long memSize;
   private int vncPort;
 
-  public Vm toEntity() {
-    return Vm.builder()
-        .id(this.id)
-        .name(this.name)
-        .cpuNum(this.cpuNum)
-        .memSize(this.memSize)
-        .vncPort(this.vncPort)
-        .build();
-  }
 }

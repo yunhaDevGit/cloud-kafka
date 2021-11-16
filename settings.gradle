@@ -1,0 +1,5 @@
+rootProject.name = 'cloudit6-kafka'
+
+include 'kafka-common'
+include 'kafka-producer'
+include 'kafka-consumer'

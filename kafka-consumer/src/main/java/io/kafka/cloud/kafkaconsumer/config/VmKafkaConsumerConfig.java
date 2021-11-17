@@ -1,6 +1,7 @@
 package io.kafka.cloud.kafkaconsumer.config;
 
 import io.kafka.cloud.kafkacommon.config.KafkaConsumerConfig;
+import io.kafka.cloud.kafkacommon.domain.Vm;
 import io.kafka.cloud.kafkaconsumer.dto.VmDto;
 import java.util.Map;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -19,16 +20,16 @@ public class VmKafkaConsumerConfig extends KafkaConsumerConfig {
   @Value("${kafka.group.ace.vm}")
   private String vmGroupId;
 
-  public ConsumerFactory<String, VmDto> vmConsumerFactory() {
+  public ConsumerFactory<String, Vm> vmConsumerFactory() {
     Map<String, Object> props = consumerFactoryConfig(vmGroupId);
     return new DefaultKafkaConsumerFactory<>(props,
         new StringDeserializer(),
-        new ErrorHandlingDeserializer(new JsonDeserializer<>(VmDto.class)));
+        new ErrorHandlingDeserializer(new JsonDeserializer<>(Vm.class)));
   }
 
   @Bean
-  public ConcurrentKafkaListenerContainerFactory<String, VmDto> vmKafkaListenerContainerFactory() {
-    ConcurrentKafkaListenerContainerFactory<String, VmDto> factory
+  public ConcurrentKafkaListenerContainerFactory<String, Vm> vmKafkaListenerContainerFactory() {
+    ConcurrentKafkaListenerContainerFactory<String, Vm> factory
         = new ConcurrentKafkaListenerContainerFactory<>();
     factory.setConsumerFactory(vmConsumerFactory());
     return factory;

@@ -1,6 +1,7 @@
 package io.kafka.cloud.kafkaproducer.config;
 
 import io.kafka.cloud.kafkacommon.config.KafkaProducerConfig;
+import io.kafka.cloud.kafkacommon.domain.Vm;
 import io.kafka.cloud.kafkaproducer.dto.VmDto;
 import java.util.Map;
 import org.springframework.context.annotation.Bean;
@@ -13,13 +14,13 @@ import org.springframework.kafka.core.ProducerFactory;
 public class VmKafkaProducerConfig extends KafkaProducerConfig {
 
   @Bean
-  public ProducerFactory<String, VmDto> vmProducerFactory() {
+  public ProducerFactory<String, Vm> vmProducerFactory() {
     Map<String, Object> configProps = producerFactoryConfig();
     return new DefaultKafkaProducerFactory<>(configProps);
   }
 
   @Bean
-  public KafkaTemplate<String, VmDto> vmKafkaTemplate() {
+  public KafkaTemplate<String, Vm> vmKafkaTemplate() {
     return new KafkaTemplate<>(vmProducerFactory());
   }
 }

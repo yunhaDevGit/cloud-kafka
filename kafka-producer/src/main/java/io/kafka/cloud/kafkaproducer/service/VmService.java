@@ -1,8 +1,7 @@
 package io.kafka.cloud.kafkaproducer.service;
 
-import io.kafka.cloud.kafkacommon.domain.Vm;
+import io.kafka.cloud.kafkacommon.dto.VmDto;
 import io.kafka.cloud.kafkacommon.repository.VmRepository;
-import io.kafka.cloud.kafkaproducer.dto.VmDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ComponentScan;
@@ -21,7 +20,7 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 public class VmService {
 
   @Autowired
-  private KafkaTemplate<String, Vm> vmKafkaTemplate;
+  private KafkaTemplate<String, VmDto> vmKafkaTemplate;
 
   @Autowired
   VmRepository vmRepository;
@@ -30,23 +29,23 @@ public class VmService {
   private String vmTopicName;
 
   @Transactional
-  public String createVm(Vm vm) {
+  public String createVm(VmDto vmDto) {
 
     // db에 넣는 로직
     System.out.println("VmService - createVm");
 
-    Message<Vm> message = MessageBuilder
-        .withPayload(vm)
+    Message<VmDto> message = MessageBuilder
+        .withPayload(vmDto)
         .setHeader(KafkaHeaders.TOPIC, vmTopicName)
         .build();
 
-    ListenableFuture<SendResult<String, Vm>> future =
+    ListenableFuture<SendResult<String, VmDto>> future =
         vmKafkaTemplate.send(message);
 
-    future.addCallback(new ListenableFutureCallback<SendResult<String, Vm>>() {
+    future.addCallback(new ListenableFutureCallback<SendResult<String, VmDto>>() {
 
       @Override
-      public void onSuccess(SendResult<String, Vm> stringObjectSendResult) {
+      public void onSuccess(SendResult<String, VmDto> stringObjectSendResult) {
         System.out.println("Sent message=[" + stringObjectSendResult.getProducerRecord().value().toString() +
             "] with offset=[" + stringObjectSendResult.getRecordMetadata().offset() + "]");
       }

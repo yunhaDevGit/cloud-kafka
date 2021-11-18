@@ -1,7 +1,6 @@
 package io.kafka.cloud.kafkaproducer.controller;
 
-import io.kafka.cloud.kafkacommon.domain.Vm;
-import io.kafka.cloud.kafkaproducer.dto.VmDto;
+import io.kafka.cloud.kafkacommon.dto.VmDto;
 import io.kafka.cloud.kafkaproducer.service.VmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,8 +14,8 @@ public class VmController {
   VmService vmService;
 
   @PostMapping("/vm/create")
-  public String createVm(@RequestBody Vm vm) {
+  public String createVm(@RequestBody VmDto vmDto) {
     System.out.println("VmController - createVm");
-    return vmService.createVm(vm);
+    return vmService.createVm(vmDto);
   }
 }

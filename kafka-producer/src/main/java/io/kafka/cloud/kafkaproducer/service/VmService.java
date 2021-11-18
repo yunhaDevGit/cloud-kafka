@@ -1,7 +1,10 @@
 package io.kafka.cloud.kafkaproducer.service;
 
+import io.kafka.cloud.kafkacommon.domain.Vm;
 import io.kafka.cloud.kafkacommon.dto.VmDto;
+import io.kafka.cloud.kafkacommon.mapper.VmMapper;
 import io.kafka.cloud.kafkacommon.repository.VmRepository;
+import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ComponentScan;
@@ -25,6 +28,8 @@ public class VmService {
   @Autowired
   VmRepository vmRepository;
 
+  private final VmMapper vmMapper = Mappers.getMapper(VmMapper.class);
+
   @Value("${kafka.topic.ace.vm}")
   private String vmTopicName;
 
@@ -32,6 +37,9 @@ public class VmService {
   public String createVm(VmDto vmDto) {
 
     // db에 넣는 로직
+    Vm vm = vmMapper.toEntity(vmDto);
+    vmRepository.save(vm);
+
     System.out.println("VmService - createVm");
 
     Message<VmDto> message = MessageBuilder

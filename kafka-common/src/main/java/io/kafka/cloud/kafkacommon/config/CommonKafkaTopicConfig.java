@@ -12,7 +12,7 @@ import org.springframework.kafka.core.KafkaAdmin;
 import org.springframework.stereotype.Component;
 
 @Component
-public class KafkaTopicConfig {
+public class CommonKafkaTopicConfig {
 
   @Value("${kafka.bootstrapAddress}")
   private String bootstrapServers;

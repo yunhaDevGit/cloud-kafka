@@ -19,7 +19,7 @@ import org.springframework.kafka.support.serializer.JsonDeserializer;
 //}
 
 //@Configuration
-public class KafkaConsumerConfig {
+public class CommonKafkaConsumerConfig {
 
   @Value("${kafka.bootstrapAddress}")
   private String bootstrapAddress;

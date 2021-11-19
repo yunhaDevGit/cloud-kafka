@@ -1,6 +1,7 @@
 package io.kafka.cloud.kafkacommon;
 
 public class Constant {
+
   public static final String ACE = "ace";
   public static final String DNS = "dna";
 

@@ -22,11 +22,8 @@ public class KafkaTopicConfig {
   @Value("${kafka.topic.ace.volume}")
   private String volumeTopicName;
 
-  @Value("${kafka.topic.ace.vm.result}")
-  private String vmResultTopicName;
-
-  @Value("${kafka.topic.ace.volume.result}")
-  private String volumeResultTopicName;
+  @Value("${kafka.topic.ace.result}")
+  private String resultTopicName;
 
   @Bean
   public KafkaAdmin kafkaAdmin() {
@@ -53,15 +50,7 @@ public class KafkaTopicConfig {
 
   @Bean
   public NewTopic vmResultTopic() {
-    return TopicBuilder.name(vmResultTopicName)
-        .partitions(1)
-        .replicas(1)
-        .build();
-  }
-
-  @Bean
-  public NewTopic volumeResultTopic() {
-    return TopicBuilder.name(volumeResultTopicName)
+    return TopicBuilder.name(resultTopicName)
         .partitions(1)
         .replicas(1)
         .build();

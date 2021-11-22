@@ -40,12 +40,12 @@ public class VmService {
     Vm vm = vmMapper.toEntity(vmDto);
     vmRepository.save(vm);
 
-    System.out.println("VmService - createVm");
-
     Message<VmDto> message = MessageBuilder
         .withPayload(vmDto)
         .setHeader(KafkaHeaders.TOPIC, vmTopicName)
         .build();
+
+    System.out.println("VmService - send Message");
 
     ListenableFuture<SendResult<String, VmDto>> future =
         vmKafkaTemplate.send(message);

@@ -15,7 +15,6 @@ public class VmController {
 
   @PostMapping("/vm/create")
   public String createVm(@RequestBody VmDto vmDto) {
-    System.out.println("VmController - createVm");
     return vmService.createVm(vmDto);
   }
 }

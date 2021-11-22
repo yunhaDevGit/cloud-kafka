@@ -1,4 +1,4 @@
-package io.kafka.cloud.kafkaproducer.controller;
+package io.kafka.cloud.admd.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 

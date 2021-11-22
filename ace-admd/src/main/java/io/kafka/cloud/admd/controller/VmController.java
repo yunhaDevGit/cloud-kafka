@@ -1,7 +1,7 @@
-package io.kafka.cloud.kafkaproducer.controller;
+package io.kafka.cloud.admd.controller;
 
 import io.kafka.cloud.kafkacommon.dto.VmDto;
-import io.kafka.cloud.kafkaproducer.service.VmService;
+import io.kafka.cloud.admd.service.VmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

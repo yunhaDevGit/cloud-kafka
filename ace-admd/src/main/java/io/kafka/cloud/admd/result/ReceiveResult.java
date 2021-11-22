@@ -1,4 +1,4 @@
-package io.kafka.cloud.kafkaproducer.result;
+package io.kafka.cloud.admd.result;
 
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.MessageHeaders;

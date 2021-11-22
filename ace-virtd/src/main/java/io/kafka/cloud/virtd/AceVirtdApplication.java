@@ -1,15 +1,15 @@
-package io.kafka.cloud.kafkaconsumer;
+package io.kafka.cloud.virtd;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(basePackages = {"io.kafka.cloud.kafkacommon.config", "io.kafka.cloud.kafkaconsumer.ace"})
+@ComponentScan(basePackages = {"io.kafka.cloud.kafkacommon.config", "io.kafka.cloud.virtd.ace"})
 @SpringBootApplication
-public class KafkaConsumerApplication {
+public class AceVirtdApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(KafkaConsumerApplication.class, args);
+    SpringApplication.run(AceVirtdApplication.class, args);
   }
 
 }

@@ -1,4 +1,4 @@
-package io.kafka.cloud.kafkaproducer.service;
+package io.kafka.cloud.admd.service;
 
 import io.kafka.cloud.kafkacommon.domain.Vm;
 import io.kafka.cloud.kafkacommon.dto.VmDto;

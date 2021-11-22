@@ -1,4 +1,4 @@
-package io.kafka.cloud.kafkaconsumer.ace;
+package io.kafka.cloud.virtd.ace;
 
 import io.kafka.cloud.kafkacommon.dto.VmDto;
 import org.springframework.beans.factory.annotation.Autowired;

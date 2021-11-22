@@ -32,7 +32,7 @@ subprojects {
     }
 }
 
-project(':kafka-producer') {
+project(':ace-admd') {
     bootJar.enabled = false
     jar.enabled = true
     dependencies {
@@ -40,7 +40,7 @@ project(':kafka-producer') {
     }
 }
 
-project(':kafka-consumer') {
+project(':ace-virtd') {
     bootJar.enabled = false
     jar.enabled = true
     dependencies {

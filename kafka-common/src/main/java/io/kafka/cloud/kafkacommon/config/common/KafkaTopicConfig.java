@@ -1,4 +1,4 @@
-package io.kafka.cloud.kafkacommon.config;
+package io.kafka.cloud.kafkacommon.config.common;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +11,7 @@ import org.springframework.kafka.core.KafkaAdmin;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CommonKafkaTopicConfig {
+public class KafkaTopicConfig {
 
   @Value("${kafka.bootstrapAddress}")
   private String bootstrapServers;
@@ -21,6 +21,12 @@ public class CommonKafkaTopicConfig {
 
   @Value("${kafka.topic.ace.volume}")
   private String volumeTopicName;
+
+  @Value("${kafka.topic.ace.vm.result}")
+  private String vmResultTopicName;
+
+  @Value("${kafka.topic.ace.volume.result}")
+  private String volumeResultTopicName;
 
   @Bean
   public KafkaAdmin kafkaAdmin() {
@@ -40,6 +46,22 @@ public class CommonKafkaTopicConfig {
   @Bean
   public NewTopic volumeTopic() {
     return TopicBuilder.name(volumeTopicName)
+        .partitions(1)
+        .replicas(1)
+        .build();
+  }
+
+  @Bean
+  public NewTopic vmResultTopic() {
+    return TopicBuilder.name(vmResultTopicName)
+        .partitions(1)
+        .replicas(1)
+        .build();
+  }
+
+  @Bean
+  public NewTopic volumeResultTopic() {
+    return TopicBuilder.name(volumeResultTopicName)
         .partitions(1)
         .replicas(1)
         .build();

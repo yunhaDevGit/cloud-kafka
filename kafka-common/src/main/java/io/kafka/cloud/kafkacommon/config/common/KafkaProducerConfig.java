@@ -1,23 +1,20 @@
-package io.kafka.cloud.kafkacommon.config;
+package io.kafka.cloud.kafkacommon.config.common;
 
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
-//@Configuration
-public class CommonKafkaProducerConfig {
+public abstract class KafkaProducerConfig<D> {
 
   @Value("${kafka.bootstrapAddress}")
   private String bootstrapServers;
 
-//  @Bean
-//  public ProducerFactory<String, Object> producerFactory() {
-//    Map<String, Object> configProps = producerFactoryConfig();
-//    return new DefaultKafkaProducerFactory<>(configProps);
-//  }
+  public abstract ProducerFactory<String, D> producerFactory();
 
   public Map<String, Object> producerFactoryConfig() {
     Map<String, Object> configProps = new HashMap<>();
@@ -27,8 +24,5 @@ public class CommonKafkaProducerConfig {
     return configProps;
   }
 
-//  @Bean
-//  public KafkaTemplate<String, Object> kafkaTemplate() {
-//    return new KafkaTemplate<>(producerFactory());
-//  }
+  public abstract KafkaTemplate<String, D> kafkaTemplate();
 }

@@ -1,22 +1,25 @@
 package io.kafka.cloud.kafkaproducer.service;
 
+import static io.kafka.cloud.kafkacommon.utils.Constant.ACTION_CODE.VM_CREATE;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.kafka.cloud.kafkacommon.domain.Vm;
 import io.kafka.cloud.kafkacommon.dto.VmDto;
 import io.kafka.cloud.kafkacommon.mapper.VmMapper;
 import io.kafka.cloud.kafkacommon.repository.VmRepository;
+import io.kafka.cloud.kafkacommon.utils.Constant.ACTION_CODE;
+import io.kafka.cloud.kafkacommon.utils.kafkaqueue.QueueAction;
+import io.kafka.cloud.kafkacommon.utils.kafkaqueue.QueueSender;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.KafkaHeaders;
-import org.springframework.kafka.support.SendResult;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.concurrent.ListenableFuture;
-import org.springframework.util.concurrent.ListenableFutureCallback;
 
 @ComponentScan(basePackages = "io.kafka.cloud.kafkacommon")
 @Service
@@ -28,10 +31,13 @@ public class VmService {
   @Autowired
   VmRepository vmRepository;
 
+  @Autowired
+  private QueueSender<ACTION_CODE> queueSender;
+
   private final VmMapper vmMapper = Mappers.getMapper(VmMapper.class);
 
-  @Value("${kafka.topic.ace.vm}")
-  private String vmTopicName;
+  @Value("${kafka.topic.ace}")
+  private String aceTopicName;
 
   @Transactional
   public String createVm(VmDto vmDto) {
@@ -42,29 +48,20 @@ public class VmService {
 
     System.out.println("VmService - createVm");
 
-    Message<VmDto> message = MessageBuilder
-        .withPayload(vmDto)
-        .setHeader(KafkaHeaders.TOPIC, vmTopicName)
+    QueueAction queueAction = QueueAction.<ACTION_CODE>builder()
+        .actionCode(VM_CREATE)
+        .actionId("vm_create actionId")
+        .object(vmDto)
         .build();
 
-    ListenableFuture<SendResult<String, VmDto>> future =
-        vmKafkaTemplate.send(message);
+    try {
+      queueSender
+          .sendAsync(aceTopicName, queueAction);
+    } catch (JsonProcessingException e) {
 
-    future.addCallback(new ListenableFutureCallback<SendResult<String, VmDto>>() {
+    }
 
-      @Override
-      public void onSuccess(SendResult<String, VmDto> stringObjectSendResult) {
-        System.out.println("Sent message=[" + stringObjectSendResult.getProducerRecord().value().toString() +
-            "] with offset=[" + stringObjectSendResult.getRecordMetadata().offset() + "]");
-      }
-
-      @Override
-      public void onFailure(Throwable ex) {
-        System.out.println("Unable to send message=[] due to : " + ex.getMessage());
-      }
-    });
-
-    return "success";
+    return queueAction.getActionId();
   }
 
 }

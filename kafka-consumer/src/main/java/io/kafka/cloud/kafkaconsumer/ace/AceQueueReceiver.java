@@ -8,11 +8,11 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 @Component
-public class VmCreateExecutor {
+public class AceQueueReceiver {
 
-  @KafkaListener(topics = "${kafka.topic.ace.vm}", groupId = "${kafka.consumer.group.ace.vm}", containerFactory = "vmKafkaListenerContainerFactory")
-  public void listenVmCreateMessage(@Payload VmDto vmDto, @Headers MessageHeaders messageHeaders) {
-    System.out.println("Received Message: " + vmDto.toString() + " headers: " + messageHeaders);
+  @KafkaListener(topics = "${kafka.topic.ace}", groupId = "cloudit", containerFactory = "kafkaListenerContainerFactory")
+  public void getAction(String action) {
+    System.out.println(action);
     // vm 생성 로직
   }
 }

@@ -12,5 +12,6 @@ public class AceQueueReceiver {
     System.out.println("AceQueueReceiver get message = " + action);
     // vm 생성 로직
 
+
   }
 }

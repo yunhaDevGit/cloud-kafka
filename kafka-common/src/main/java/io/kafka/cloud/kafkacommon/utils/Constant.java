@@ -1,7 +1,7 @@
 package io.kafka.cloud.kafkacommon.utils;
 
 import io.kafka.cloud.kafkacommon.utils.constant.ActionCode;
-import io.kafka.cloud.kafkacommon.utils.kafkaqueue.Executor;
+import io.kafka.cloud.kafkacommon.utils.constant.ActionResult;
 
 public class Constant {
 
@@ -16,14 +16,9 @@ public class Constant {
 
   public enum ACTION_CODE implements ActionCode {
     VM_LIST, VM_CREATE, VM_DELETE, VM_START;
-
-    @Override
-    public Executor getExecutor() {
-      return null;
-    }
   }
 
-  public enum CMD_RESULT {
-    SUCCESS, FAILED
+  public enum ACTION_RESULT implements ActionResult {
+    ACTION_SUCCESS, ACTION_FAILED
   }
 }

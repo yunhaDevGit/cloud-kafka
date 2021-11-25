@@ -7,10 +7,10 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan(basePackages = {"io.kafka.cloud.kafkacommon.config",
     "io.kafka.cloud.kafkaconsumer.ace"})
 @SpringBootApplication
-public class KafkaConsumerApplication {
+public class AceVirtdApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(KafkaConsumerApplication.class, args);
+    SpringApplication.run(AceVirtdApplication.class, args);
   }
 
 }

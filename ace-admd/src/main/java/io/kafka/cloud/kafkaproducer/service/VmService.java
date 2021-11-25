@@ -9,12 +9,11 @@ import io.kafka.cloud.kafkacommon.mapper.VmMapper;
 import io.kafka.cloud.kafkacommon.repository.VmRepository;
 import io.kafka.cloud.kafkacommon.utils.Constant.ACTION_CODE;
 import io.kafka.cloud.kafkacommon.utils.kafkaqueue.QueueAction;
-import io.kafka.cloud.kafkacommon.utils.kafkaqueue.QueueSender;
+import io.kafka.cloud.kafkacommon.utils.kafkaqueue.ActionQueueSender;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,13 +22,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class VmService {
 
   @Autowired
-  private KafkaTemplate<String, VmDto> vmKafkaTemplate;
-
-  @Autowired
   VmRepository vmRepository;
 
   @Autowired
-  private QueueSender<ACTION_CODE> queueSender;
+  private ActionQueueSender<ACTION_CODE> actionQueueSender;
 
   private final VmMapper vmMapper = Mappers.getMapper(VmMapper.class);
 
@@ -52,7 +48,7 @@ public class VmService {
         .build();
 
     try {
-      queueSender
+      actionQueueSender
           .sendAsync(aceTopicName, queueAction);
     } catch (JsonProcessingException e) {
 

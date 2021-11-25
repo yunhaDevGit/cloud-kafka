@@ -2,7 +2,7 @@ package io.kafka.cloud.kafkacommon.utils.kafkaqueue;
 
 import io.kafka.cloud.kafkacommon.utils.constant.ActionCode;
 
-public class QueueAction<K extends ActionCode>{
+public class QueueAction<K extends ActionCode> {
 
   private static final long serialVersionUID = 1L;
   private String queue;
@@ -47,7 +47,8 @@ public class QueueAction<K extends ActionCode>{
     this.actionCode = actionCode;
   }
 
-  public QueueAction(final String queue,final String actionId,final Object object,final K actionCode) {
+  public QueueAction(final String queue, final String actionId, final Object object,
+      final K actionCode) {
     this.queue = queue;
     this.actionId = actionId;
     this.object = object;
@@ -55,6 +56,7 @@ public class QueueAction<K extends ActionCode>{
   }
 
   public static class QueueActionBuilder<K extends ActionCode> {
+
     private String queue;
     private String actionId;
     private Object object;
@@ -89,7 +91,8 @@ public class QueueAction<K extends ActionCode>{
     }
 
     public String toString() {
-      return "QueueAction.QueueActionBuilder(queue=" + this.queue + ", actionId=" + this.actionId + ", object=" + this.object + ", actionCode=" + this.actionCode;
+      return "QueueAction.QueueActionBuilder(queue=" + this.queue + ", actionId=" + this.actionId
+          + ", object=" + this.object + ", actionCode=" + this.actionCode;
     }
   }
 

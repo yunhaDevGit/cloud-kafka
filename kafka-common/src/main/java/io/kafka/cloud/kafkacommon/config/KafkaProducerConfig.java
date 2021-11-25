@@ -26,12 +26,12 @@ public class KafkaProducerConfig<T extends QueueAction<?>> {
     return configProps;
   }
 
-  public ProducerFactory<String, T> producerFactory(){
+  public ProducerFactory<String, T> producerFactory() {
     return new DefaultKafkaProducerFactory<>(producerFactoryConfig());
   }
 
   @Bean
-  public KafkaTemplate<String, T> kafkaTemplate(){
+  public KafkaTemplate<String, T> kafkaTemplate() {
     return new KafkaTemplate<>(producerFactory());
   }
 

@@ -8,5 +8,6 @@ import org.springframework.stereotype.Service;
 @EnableKafka
 @Configuration
 public interface QueueReceiver {
+
   void listen(String action) throws Exception;
 }

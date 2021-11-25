@@ -23,12 +23,12 @@ public class KafkaConsumerConfig {
     return props;
   }
 
-  public ConsumerFactory<String, Object> consumerFactory(){
+  public ConsumerFactory<String, Object> consumerFactory() {
     return new DefaultKafkaConsumerFactory<>(consumerFactoryConfig());
   }
 
   @Bean
-  public ConcurrentKafkaListenerContainerFactory<String, Object> kafkaListenerContainerFactory(){
+  public ConcurrentKafkaListenerContainerFactory<String, Object> kafkaListenerContainerFactory() {
     ConcurrentKafkaListenerContainerFactory<String, Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
     factory.setConsumerFactory(consumerFactory());
 //    factory.setConcurrency(3); -> Consumer 개수 설정 가능

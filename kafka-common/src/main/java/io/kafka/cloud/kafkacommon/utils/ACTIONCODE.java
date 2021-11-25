@@ -1,7 +1,6 @@
 package io.kafka.cloud.kafkacommon.utils;
 
 import io.kafka.cloud.kafkacommon.utils.constant.Constant;
-import java.io.Serializable;
 
 public enum ACTIONCODE implements Constant {
 
@@ -16,7 +15,9 @@ public enum ACTIONCODE implements Constant {
     this.actioncode = actioncode;
   }
 
-  public String getState() { return actioncode; }
+  public String getState() {
+    return actioncode;
+  }
 
   @Override
   public Object getExecutor() {

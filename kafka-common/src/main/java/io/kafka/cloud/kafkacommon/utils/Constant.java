@@ -6,7 +6,7 @@ import io.kafka.cloud.kafkacommon.utils.constant.ActionResult;
 public class Constant {
 
   public static final String ACE = "ace";
-  public static final String DNS = "dna";
+  public static final String DNA = "dna";
 
   public static final String VM = "vm";
   public static final String VOLUME = "volume";

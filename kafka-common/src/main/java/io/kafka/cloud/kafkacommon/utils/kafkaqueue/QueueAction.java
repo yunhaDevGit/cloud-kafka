@@ -5,21 +5,12 @@ import io.kafka.cloud.kafkacommon.utils.constant.ActionCode;
 public class QueueAction<K extends ActionCode> {
 
   private static final long serialVersionUID = 1L;
-  private String queue;
   private String actionId;
   private Object object;
   private K actionCode;
 
   public static <K extends ActionCode> QueueAction.QueueActionBuilder<K> builder() {
     return new QueueAction.QueueActionBuilder();
-  }
-
-  public String getQueue() {
-    return queue;
-  }
-
-  public void setQueue(final String queue) {
-    this.queue = queue;
   }
 
   public String getActionId() {
@@ -47,9 +38,8 @@ public class QueueAction<K extends ActionCode> {
     this.actionCode = actionCode;
   }
 
-  public QueueAction(final String queue, final String actionId, final Object object,
+  public QueueAction(final String actionId, final Object object,
       final K actionCode) {
-    this.queue = queue;
     this.actionId = actionId;
     this.object = object;
     this.actionCode = actionCode;
@@ -57,18 +47,12 @@ public class QueueAction<K extends ActionCode> {
 
   public static class QueueActionBuilder<K extends ActionCode> {
 
-    private String queue;
     private String actionId;
     private Object object;
     private K actionCode;
 
     QueueActionBuilder() {
 
-    }
-
-    public QueueAction.QueueActionBuilder<K> queue(final String queue) {
-      this.queue = queue;
-      return this;
     }
 
     public QueueAction.QueueActionBuilder<K> actionId(final String actionId) {
@@ -87,13 +71,12 @@ public class QueueAction<K extends ActionCode> {
     }
 
     public QueueAction<K> build() {
-      return new QueueAction(this.queue, this.actionId, this.object, this.actionCode);
+      return new QueueAction(this.actionId, this.object, this.actionCode);
     }
 
     public String toString() {
-      return "QueueAction.QueueActionBuilder(queue=" + this.queue + ", actionId=" + this.actionId
-          + ", object=" + this.object + ", actionCode=" + this.actionCode;
+      return "QueueAction.QueueActionBuilder(actionId=" + this.actionId + ", object=" + this.object + ", actionCode=" + this.actionCode;
     }
   }
-
 }
+

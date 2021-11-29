@@ -34,7 +34,9 @@ public class AceQueueReceiver {
     System.out.println("AceQueueReceiver get message = " + action);
 
     JSONObject jsonObject = new JSONObject(action);
-    ACTION_CODE actionCode = (ACTION_CODE) jsonObject.get("actionCode");
+//    ACTION_CODE actionCode = (ACTION_CODE) jsonObject.get("actionCode");
+
+    ACTION_CODE actionCode = ACTION_CODE.valueOf((String) jsonObject.get("actionCode"));
 
     boolean result = true;
     switch (actionCode){

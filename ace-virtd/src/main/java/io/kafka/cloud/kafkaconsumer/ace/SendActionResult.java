@@ -36,5 +36,6 @@ public class SendActionResult<T> {
         .build();
 
     resultKafkaTemplate.send(message);
+    System.out.println("SendActionResult - sendMessage " + message);
   }
 }

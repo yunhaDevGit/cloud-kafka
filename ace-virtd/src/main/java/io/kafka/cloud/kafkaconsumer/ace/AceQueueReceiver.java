@@ -29,20 +29,33 @@ public class AceQueueReceiver {
   @Autowired
   private KafkaTemplate<String, ResultDto> resultKafkaTemplate;
 
+  @Autowired
+  private SendActionResult sendActionResult;
+
   @KafkaListener(topics = "${kafka.topic.ace}", groupId = "${kafka.consumer.group.ace}", containerFactory = "aceKafkaListenerContainerFactory")
   public void getAction(String action) {
     System.out.println("AceQueueReceiver get message = " + action);
 
-    JSONObject jsonObject = new JSONObject(action);
-//    ACTION_CODE actionCode = (ACTION_CODE) jsonObject.get("actionCode");
+    JSONObject actionObject = new JSONObject(action);
+    JSONObject jsonObject = actionObject.optJSONObject("object");
+//    ACTION_CODE actionCode = (ACTION_CODE) actionObject.get("actionCode");
 
-    ACTION_CODE actionCode = ACTION_CODE.valueOf((String) jsonObject.get("actionCode"));
+    ACTION_CODE actionCode = ACTION_CODE.valueOf((String) actionObject.get("actionCode"));
 
     boolean result = true;
     switch (actionCode){
       case VM_CREATE:
         // vm 생성 로직
-        // result = true;
+//        VmDto vmDto = (VmDto) jsonObject;
+        VmDto vmDto = new VmDto();
+        vmDto.setId("id");
+        vmDto.setCpuNum(6);
+        vmDto.setMemSize(8);
+        vmDto.setVncPort(10);
+
+        result = true;
+//        SendActionResult<VmDto> sendActionResult = null;
+        sendActionResult.sendMessage(vmDto, result);
         break;
       case VM_DELETE:
         // vm 삭제 로직
@@ -54,21 +67,5 @@ public class AceQueueReceiver {
     }
 
   }
-//
-//  public void sendMessage(T dto, boolean action_result){
-//
-//    ResultDto<T, ActionResult> resultDto = new ResultDto<>();
-//    resultDto.setDto(dto);
-//    if(action_result)
-//      resultDto.setAction_result(ACTION_RESULT.ACTION_SUCCESS);
-//    else
-//      resultDto.setAction_result(ACTION_RESULT.ACTION_FAILED);
-//
-//    Message<ResultDto<T, ActionResult>> message = MessageBuilder
-//        .withPayload(resultDto)
-//        .setHeader(KafkaHeaders.TOPIC, actionResultTopic)
-//        .build();
-//
-//    resultKafkaTemplate.send(message);
-//  }
+
 }

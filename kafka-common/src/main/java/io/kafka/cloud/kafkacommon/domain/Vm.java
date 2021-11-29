@@ -20,9 +20,9 @@ import org.hibernate.annotations.GenericGenerator;
 public class Vm {
 
   @Id
-  @GeneratedValue(generator = "uuid")
-  @GenericGenerator(name = "uuid", strategy = "uuid2")
-  @Column(columnDefinition = "VARCHAR(36)", insertable = false, updatable = false, nullable = false)
+//  @GeneratedValue(generator = "uuid")
+//  @GenericGenerator(name = "uuid", strategy = "uuid2")
+//  @Column(columnDefinition = "VARCHAR(36)", insertable = false, updatable = false, nullable = false)
   private String id;
 
   private String name;

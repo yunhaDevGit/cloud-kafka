@@ -53,21 +53,22 @@ public class AceQueueReceiver {
         break;
     }
 
-
-
-    ResultDto<VmDto, ActionResult> resultDto = new ResultDto<>();
-    VmDto vmDto = new VmDto();
-    vmDto.setId("vmId");
-    vmDto.setCpuNum(8);
-
-    resultDto.setDto(vmDto);
-    resultDto.setAction_result(ACTION_RESULT.ACTION_SUCCESS);
-
-    Message<ResultDto<VmDto, ActionResult>> message = MessageBuilder
-        .withPayload(resultDto)
-        .setHeader(KafkaHeaders.TOPIC, actionResultTopic)
-        .build();
-
-    resultKafkaTemplate.send(message);
   }
+//
+//  public void sendMessage(T dto, boolean action_result){
+//
+//    ResultDto<T, ActionResult> resultDto = new ResultDto<>();
+//    resultDto.setDto(dto);
+//    if(action_result)
+//      resultDto.setAction_result(ACTION_RESULT.ACTION_SUCCESS);
+//    else
+//      resultDto.setAction_result(ACTION_RESULT.ACTION_FAILED);
+//
+//    Message<ResultDto<T, ActionResult>> message = MessageBuilder
+//        .withPayload(resultDto)
+//        .setHeader(KafkaHeaders.TOPIC, actionResultTopic)
+//        .build();
+//
+//    resultKafkaTemplate.send(message);
+//  }
 }

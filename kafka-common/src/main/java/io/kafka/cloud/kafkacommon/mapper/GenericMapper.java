@@ -1,12 +1,14 @@
 package io.kafka.cloud.kafkacommon.mapper;
 
+import io.kafka.cloud.kafkacommon.domain.Vm;
+import java.util.Optional;
 import org.mapstruct.BeanMapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
 public interface GenericMapper<D, E> {
 
-  D toDto(E e);
+  D toDto(Optional<Vm> e);
 
   E toEntity(D d);
 

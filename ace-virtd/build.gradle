@@ -3,6 +3,7 @@ dependencies {
     implementation 'org.springframework.kafka:spring-kafka'
     implementation 'org.projectlombok:lombok:1.18.16'
     implementation 'org.json:json:20210307'
+    implementation 'com.google.code.gson:gson:2.8.6'
 }
 
 test {

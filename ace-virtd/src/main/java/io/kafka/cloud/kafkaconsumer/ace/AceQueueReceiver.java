@@ -1,5 +1,6 @@
 package io.kafka.cloud.kafkaconsumer.ace;
 
+import com.google.gson.Gson;
 import io.kafka.cloud.kafkacommon.domain.Vm;
 import io.kafka.cloud.kafkacommon.dto.ResultDto;
 import io.kafka.cloud.kafkacommon.dto.VmDto;
@@ -46,12 +47,9 @@ public class AceQueueReceiver {
     switch (actionCode){
       case VM_CREATE:
         // vm 생성 로직
-//        VmDto vmDto = (VmDto) jsonObject;
-        VmDto vmDto = new VmDto();
-        vmDto.setId("id");
-        vmDto.setCpuNum(6);
-        vmDto.setMemSize(8);
-        vmDto.setVncPort(10);
+
+        Gson gson = new Gson();
+        VmDto vmDto = gson.fromJson(jsonObject.toString(), VmDto.class);
 
         result = true;
 //        SendActionResult<VmDto> sendActionResult = null;

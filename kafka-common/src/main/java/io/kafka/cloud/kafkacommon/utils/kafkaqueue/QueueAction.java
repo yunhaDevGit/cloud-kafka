@@ -2,10 +2,10 @@ package io.kafka.cloud.kafkacommon.utils.kafkaqueue;
 
 import io.kafka.cloud.kafkacommon.utils.Constant.ACTION_CODE;
 
-public class QueueAction{
+public class QueueAction<T>{
 
   private String actionId;
-  private Object object;
+  private T dto;
   private ACTION_CODE actionCode;
 
   public static QueueAction.QueueActionBuilder builder() {
@@ -21,12 +21,12 @@ public class QueueAction{
   }
 
 
-  public Object getObject() {
-    return object;
+  public Object getDto() {
+    return dto;
   }
 
-  public void setObject(final Object object) {
-    this.object = object;
+  public void setDto(final T dto) {
+    this.dto = dto;
   }
 
   public ACTION_CODE getActionCode() {
@@ -37,17 +37,17 @@ public class QueueAction{
     this.actionCode = actionCode;
   }
 
-  public QueueAction(final String actionId, final Object object,
+  public QueueAction(final String actionId, final T dto,
       final ACTION_CODE actionCode) {
     this.actionId = actionId;
-    this.object = object;
+    this.dto = dto;
     this.actionCode = actionCode;
   }
 
-  public static class QueueActionBuilder {
+  public static class QueueActionBuilder<T> {
 
     private String actionId;
-    private Object object;
+    private T dto;
     private ACTION_CODE actionCode;
 
     QueueActionBuilder() {
@@ -59,8 +59,8 @@ public class QueueAction{
       return this;
     }
 
-    public QueueAction.QueueActionBuilder object(final Object object) {
-      this.object = object;
+    public QueueAction.QueueActionBuilder dto(final T dto) {
+      this.dto = dto;
       return this;
     }
 
@@ -70,11 +70,11 @@ public class QueueAction{
     }
 
     public QueueAction build() {
-      return new QueueAction(this.actionId, this.object, this.actionCode);
+      return new QueueAction(this.actionId, this.dto, this.actionCode);
     }
 
     public String toString() {
-      return "QueueAction.QueueActionBuilder(actionId=" + this.actionId + ", object=" + this.object + ", actionCode=" + this.actionCode;
+      return "QueueAction.QueueActionBuilder(actionId=" + this.actionId + ", object=" + this.dto + ", actionCode=" + this.actionCode;
     }
   }
 }

@@ -8,7 +8,6 @@ import io.kafka.cloud.kafkacommon.domain.Vm;
 import io.kafka.cloud.kafkacommon.dto.VmDto;
 import io.kafka.cloud.kafkacommon.mapper.VmMapper;
 import io.kafka.cloud.kafkacommon.repository.VmRepository;
-import io.kafka.cloud.kafkacommon.utils.Constant.ACTION_CODE;
 import io.kafka.cloud.kafkacommon.utils.kafkaqueue.QueueAction;
 import io.kafka.cloud.kafkacommon.utils.kafkaqueue.ActionQueueSender;
 import java.util.Optional;
@@ -46,7 +45,7 @@ public class VmService {
     QueueAction queueAction = QueueAction.builder()
         .actionCode(VM_CREATE)
         .actionId("vm_create actionId")
-        .object(vmDto)
+        .dto(vmDto)
         .build();
 
     try {
@@ -75,7 +74,7 @@ public class VmService {
     QueueAction queueAction = QueueAction.builder()
         .actionCode(VM_DELETE)
         .actionId("vm_delete actionId")
-        .object(vmDto)
+        .dto(vmDto)
         .build();
 
 

@@ -22,7 +22,7 @@ public class AceQueueReceiver {
     System.out.println("AceQueueReceiver - message = " + action);
 
     JSONObject actionObject = new JSONObject(action);
-    JSONObject jsonObject = actionObject.optJSONObject("object");
+    JSONObject jsonDto = actionObject.optJSONObject("dto");
 
     ACTION_CODE actionCode = ACTION_CODE.valueOf((String) actionObject.get("actionCode"));
 
@@ -32,7 +32,7 @@ public class AceQueueReceiver {
         // vm 생성 로직
 
         Gson gson = new Gson();
-        VmDto vmDto = gson.fromJson(jsonObject.toString(), VmDto.class);
+        VmDto vmDto = gson.fromJson(jsonDto.toString(), VmDto.class);
 
         result = true;
         sendActionResult.sendMessage(vmDto, result);

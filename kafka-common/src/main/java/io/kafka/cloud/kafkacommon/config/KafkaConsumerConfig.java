@@ -1,4 +1,4 @@
-package io.kafka.cloud.kafkacommon.config.common;
+package io.kafka.cloud.kafkacommon.config;
 
 import java.util.HashMap;
 import java.util.Map;

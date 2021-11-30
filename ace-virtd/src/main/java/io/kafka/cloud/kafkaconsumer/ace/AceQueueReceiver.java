@@ -20,7 +20,7 @@ import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 
 
-@ComponentScan(basePackages = "io.kafka.cloud.kafkacommon")
+@ComponentScan(basePackages = {"io.kafka.cloud.kafkacommon","io.kafka.cloud.kafkaconsumer.config"})
 @Component
 public class AceQueueReceiver {
 

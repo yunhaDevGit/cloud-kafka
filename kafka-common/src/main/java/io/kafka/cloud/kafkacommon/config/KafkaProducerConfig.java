@@ -1,4 +1,4 @@
-package io.kafka.cloud.kafkacommon.config.common;
+package io.kafka.cloud.kafkacommon.config;
 
 import io.kafka.cloud.kafkacommon.utils.kafkaqueue.QueueAction;
 import io.kafka.cloud.kafkacommon.utils.queue.QueueSender;

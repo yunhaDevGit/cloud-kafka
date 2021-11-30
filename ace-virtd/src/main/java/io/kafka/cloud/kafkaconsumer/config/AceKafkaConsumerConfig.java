@@ -1,6 +1,6 @@
-package io.kafka.cloud.kafkacommon.config;
+package io.kafka.cloud.kafkaconsumer.config;
 
-import io.kafka.cloud.kafkacommon.config.common.KafkaConsumerConfig;
+import io.kafka.cloud.kafkacommon.config.KafkaConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

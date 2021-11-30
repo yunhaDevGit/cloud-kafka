@@ -1,4 +1,4 @@
-package io.kafka.cloud.kafkacommon.config;
+package io.kafka.cloud.kafkaproducer.config;
 
 import io.kafka.cloud.kafkacommon.dto.ResultDto;
 import java.util.HashMap;

@@ -27,7 +27,7 @@ public class VmService {
   VmRepository vmRepository;
 
   @Autowired
-  private ActionQueueSender<ACTION_CODE> actionQueueSender;
+  private ActionQueueSender actionQueueSender;
 
   private final VmMapper vmMapper = Mappers.getMapper(VmMapper.class);
 
@@ -43,7 +43,7 @@ public class VmService {
 
     System.out.println("VmService - createVm");
 
-    QueueAction queueAction = QueueAction.<ACTION_CODE>builder()
+    QueueAction queueAction = QueueAction.builder()
         .actionCode(VM_CREATE)
         .actionId("vm_create actionId")
         .object(vmDto)
@@ -72,7 +72,7 @@ public class VmService {
 
     System.out.println("VmService - deleteVm");
 
-    QueueAction queueAction = QueueAction.<ACTION_CODE>builder()
+    QueueAction queueAction = QueueAction.builder()
         .actionCode(VM_DELETE)
         .actionId("vm_delete actionId")
         .object(vmDto)

@@ -2,7 +2,6 @@ package io.kafka.cloud.kafkaconsumer.ace;
 
 import io.kafka.cloud.kafkacommon.dto.ResultDto;
 import io.kafka.cloud.kafkacommon.utils.Constant.ACTION_RESULT;
-import io.kafka.cloud.kafkacommon.utils.constant.ActionResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -22,14 +21,14 @@ public class SendActionResult<T> {
 
   public void sendMessage(T dto, boolean action_result){
 
-    ResultDto<T, ActionResult> resultDto = new ResultDto<>();
+    ResultDto<T> resultDto = new ResultDto<>();
     resultDto.setDto(dto);
     if(action_result)
       resultDto.setAction_result(ACTION_RESULT.ACTION_SUCCESS);
     else
       resultDto.setAction_result(ACTION_RESULT.ACTION_FAILED);
 
-    Message<ResultDto<T, ActionResult>> message = MessageBuilder
+    Message<ResultDto<T>> message = MessageBuilder
         .withPayload(resultDto)
         .setHeader(KafkaHeaders.TOPIC, actionResultTopic)
         .build();

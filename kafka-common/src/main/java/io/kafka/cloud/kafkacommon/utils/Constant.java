@@ -1,8 +1,5 @@
 package io.kafka.cloud.kafkacommon.utils;
 
-import io.kafka.cloud.kafkacommon.utils.constant.ActionCode;
-import io.kafka.cloud.kafkacommon.utils.constant.ActionResult;
-
 public class Constant {
 
   public static final String ACE = "ace";
@@ -14,11 +11,11 @@ public class Constant {
   public static final String ADAPTIVE_IP = "adaptive_ip";
 
 
-  public enum ACTION_CODE implements ActionCode {
+  public enum ACTION_CODE {
     VM_LIST, VM_CREATE, VM_DELETE, VM_START;
   }
 
-  public enum ACTION_RESULT implements ActionResult {
+  public enum ACTION_RESULT {
     ACTION_SUCCESS, ACTION_FAILED
   }
 }

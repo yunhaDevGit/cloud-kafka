@@ -2,7 +2,6 @@ package io.kafka.cloud.kafkacommon.utils.kafkaqueue;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.kafka.cloud.kafkacommon.utils.constant.ActionCode;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
@@ -12,11 +11,11 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 
 @Service
 @Configuration
-public class ActionQueueSender<T extends ActionCode> {
+public class ActionQueueSender {
   private final KafkaTemplate<String, String> kafkaTemplate;
   private final ObjectMapper objectMapper;
 
-  public void sendAsync(String topic, QueueAction<T> action) throws JsonProcessingException {
+  public void sendAsync(String topic, QueueAction action) throws JsonProcessingException {
     System.out.println("ActionQueueSender - sendAsync");
     System.out.println("SendingMessage=" + action.toString() + ", topic=" + topic);
     String value = this.objectMapper.writeValueAsString(action);

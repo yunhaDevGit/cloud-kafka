@@ -14,7 +14,7 @@ import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
 @Configuration
-public class KafkaProducerConfig<T extends QueueAction<?>> {
+public class KafkaProducerConfig<T extends QueueAction> {
 
   @Value("${kafka.bootstrapAddress}")
   private String bootstrapServers;

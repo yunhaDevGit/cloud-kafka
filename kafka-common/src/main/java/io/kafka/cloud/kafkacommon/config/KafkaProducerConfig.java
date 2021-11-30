@@ -1,7 +1,6 @@
 package io.kafka.cloud.kafkacommon.config;
 
 import io.kafka.cloud.kafkacommon.utils.kafkaqueue.QueueAction;
-import io.kafka.cloud.kafkacommon.utils.queue.QueueSender;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -37,8 +36,4 @@ public class KafkaProducerConfig<T extends QueueAction<?>> {
     return new KafkaTemplate<>(producerFactory());
   }
 
-  @Bean
-  public QueueSender<T> sender() {
-    return new QueueSender();
-  }
 }

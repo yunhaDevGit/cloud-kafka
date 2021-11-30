@@ -1,7 +1,6 @@
 package io.kafka.cloud.kafkaconsumer.ace;
 
 import io.kafka.cloud.kafkacommon.dto.ResultDto;
-import io.kafka.cloud.kafkacommon.dto.VmDto;
 import io.kafka.cloud.kafkacommon.utils.Constant.ACTION_RESULT;
 import io.kafka.cloud.kafkacommon.utils.constant.ActionResult;
 import org.springframework.beans.factory.annotation.Autowired;

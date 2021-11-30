@@ -19,7 +19,6 @@ public class AceKafkaConsumerConfig extends KafkaConsumerConfig {
 
   @Override
   public ConsumerFactory<String, Object> consumerFactory() {
-//    return new DefaultKafkaConsumerFactory<>(consumerFactoryConfig(aceGroupId));
     return new DefaultKafkaConsumerFactory<>(consumerFactoryConfig(aceGroupId),
         new StringDeserializer(),
         new ErrorHandlingDeserializer(new JsonDeserializer<>()));

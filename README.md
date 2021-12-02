@@ -167,7 +167,7 @@ zookeeper.connect=192.168.120.130, 192.168.120.131, 192.168.120.132
 
 ## Kafka 사용법(환경 설정)
 
-[Kakfa 설치 및 환경 구성](https://www.notion.so/Kakfa-87f1e072fb62456f9667a4db047a9c5a)
+[Kakfa 설치 및 환경 구성](https://github.com/yunhaDevGit/Kafka-Test)
 
 ## 샘플 프로젝트 구조
 

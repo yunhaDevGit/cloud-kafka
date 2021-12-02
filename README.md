@@ -19,9 +19,9 @@ Kafka는 대량의 데이터를 **높은 처리량**과  **실시간**으로 다
 
 - pub/sub 구조
 
-![image](https://user-images.githubusercontent.com/74949294/144345941-8a8680b3-24cb-4a6d-9e66-8532d2485fd8.png)
+<img src = "https://user-images.githubusercontent.com/74949294/144345941-8a8680b3-24cb-4a6d-9e66-8532d2485fd8.png" width="40%" height="height 20%">
 
-![image](https://user-images.githubusercontent.com/74949294/144345955-3502e21d-054e-4414-92a3-7796205cc5f8.png)
+<img src = "https://user-images.githubusercontent.com/74949294/144345955-3502e21d-054e-4414-92a3-7796205cc5f8.png" width="60%" height="height 30%">
 
 ## Kafka 구성요소
 

@@ -210,9 +210,6 @@ ace-virtd
 - 모두가 흔히 말하는 카프카는 Apache kakfa인데 spring boot에서 apache kafka를 좀 더 편리하게 사용할 수 있도록 한 라이브러리이다.
 - spring kafka를 사용하면 apache kafka를 사용할 수 있다.
 
-## 샘플 프로젝트 시현
-
-- Topic에 대한 설정이 별도로 없어도 `auto.create.topic.enable` 설정을 통해 자동으로 생성 된다. 해당 설정은 default 값이 `true`이다
 
 ### kafka-common
 
